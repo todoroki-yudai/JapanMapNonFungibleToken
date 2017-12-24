@@ -39,10 +39,6 @@ contract("Non-Fungible Token", (ACCOUNTS) => {
     const NONEXISTENT_TOKEN_ID = new BigNumber.BigNumber(13);
     const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 
-    const METADATA_STRING_1 = "ipfs://QmZU8bKEG8fhcQwKoLHfjtJoKBzvUT5LFR3f8dEz86WdVe";
-    const METADATA_STRING_2 = "https://www.example.com";
-    const METADATA_STRING_3 = "unstructured arbitrary metadata string";
-
     const TX_DEFAULTS = { from: CONTRACT_OWNER, gas: 4000000 };
 
     const deployNft = async () => {
@@ -58,18 +54,18 @@ contract("Non-Fungible Token", (ACCOUNTS) => {
 
         mintableNft = new TestMintableNFTContract(
             web3ContractInstance, TX_DEFAULTS);
-    }
+    };
 
     const deployAndInitNft = async () => {
         await deployNft();
 
         await mintableNft.mint
-            .sendTransactionAsync(TOKEN_OWNER_1, TOKEN_ID_1, METADATA_STRING_1);
+            .sendTransactionAsync(TOKEN_OWNER_1, TOKEN_ID_1);
         await mintableNft.mint
-            .sendTransactionAsync(TOKEN_OWNER_2, TOKEN_ID_2, METADATA_STRING_2);
+            .sendTransactionAsync(TOKEN_OWNER_2, TOKEN_ID_2);
         await mintableNft.mint
-            .sendTransactionAsync(TOKEN_OWNER_3, TOKEN_ID_3, METADATA_STRING_3);
-    }
+            .sendTransactionAsync(TOKEN_OWNER_3, TOKEN_ID_3);
+    };
 
     before(deployNft);
 
@@ -97,20 +93,20 @@ contract("Non-Fungible Token", (ACCOUNTS) => {
 
         it("should return correct current supply after each mint", async () => {
             await mintableNft.mint
-                .sendTransactionAsync(TOKEN_OWNER_1, TOKEN_ID_1, METADATA_STRING_1);
+                .sendTransactionAsync(TOKEN_OWNER_1, TOKEN_ID_1);
             await expect(mintableNft.totalSupply.callAsync()).to.eventually.bignumber.equal(1);
 
             await mintableNft.mint
-                .sendTransactionAsync(TOKEN_OWNER_2, TOKEN_ID_2, METADATA_STRING_2);
+                .sendTransactionAsync(TOKEN_OWNER_2, TOKEN_ID_2);
             await expect(mintableNft.totalSupply.callAsync()).to.eventually.bignumber.equal(2);
 
             await mintableNft.mint
-                .sendTransactionAsync(TOKEN_OWNER_3, TOKEN_ID_3, METADATA_STRING_3);
+                .sendTransactionAsync(TOKEN_OWNER_3, TOKEN_ID_3);
             await expect(mintableNft.totalSupply.callAsync()).to.eventually.bignumber.equal(3);
         });
     });
 
-    describe('#balanceOf()', async () => {
+    describe("#balanceOf()", async () => {
         before(deployAndInitNft);
 
         it("should return 1 for each owner's balance", async () => {
@@ -123,7 +119,7 @@ contract("Non-Fungible Token", (ACCOUNTS) => {
         });
     });
 
-    describe('#tokenOfOwnerByIndex()', async () => {
+    describe("#tokenOfOwnerByIndex()", async () => {
         before(deployAndInitNft);
 
         it("should return current token at index 0 for each user", async () => {
@@ -148,19 +144,6 @@ contract("Non-Fungible Token", (ACCOUNTS) => {
                 await expect(mintableNft.tokenOfOwnerByIndex
                     .callAsync(TOKEN_OWNER_3, new BigNumber.BigNumber(1)))
                     .to.eventually.be.rejectedWith(INVALID_OPCODE);
-        });
-    });
-
-    describe("#tokenMetadata()", async () => {
-        before(deployAndInitNft);
-
-        it("should return correct metadata for each token", async () => {
-            await expect(mintableNft.tokenMetadata.callAsync(TOKEN_ID_1))
-                .to.eventually.equal(METADATA_STRING_1);
-            await expect(mintableNft.tokenMetadata.callAsync(TOKEN_ID_2))
-                .to.eventually.equal(METADATA_STRING_2);
-            await expect(mintableNft.tokenMetadata.callAsync(TOKEN_ID_3))
-                .to.eventually.equal(METADATA_STRING_3);
         });
     });
 
@@ -314,7 +297,6 @@ contract("Non-Fungible Token", (ACCOUNTS) => {
                     .to.eventually.be.rejectedWith(INVALID_OPCODE);
             });
         });
-
 
         describe("user transfers token with outstanding approval", () => {
             let res: Web3.TransactionReceipt;

@@ -20,13 +20,12 @@ contract MintableNonFungibleToken is NonFungibleToken {
         _;
     }
 
-    function mint(address _owner, uint256 _tokenId, string _metadata)
+    function mint(address _owner, uint256 _tokenId)
         public
         onlyNonexistentToken(_tokenId)
     {
         _setTokenOwner(_tokenId, _owner);
         _addTokenToOwnersList(_owner, _tokenId);
-        _insertTokenMetadata(_tokenId, _metadata);
 
         numTokensTotal = numTokensTotal.add(1);
 
