@@ -1,6 +1,6 @@
-const NFT = artifacts.require("NonFungibleToken");
-const MintableNFT = artifacts.require("MintableNonFungibleToken");
+const LandBase = artifacts.require("LandBase");
+const Prefecture = artifacts.require("Prefecture");
 
 module.exports = (deployer: any) => {
-    deployer.deploy(NFT);
+    deployer.deploy(Prefecture);
 };
