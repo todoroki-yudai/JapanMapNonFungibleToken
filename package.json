@@ -1,5 +1,5 @@
 {
-  "name": "NonFungibleToken",
+  "name": "Prefecture",
   "version": "0.0.1",
   "description": "A generic implementation of the ERC721 Standard for non-fungible tokens",
   "scripts": {
@@ -11,7 +11,9 @@
     "compile": "rm -rf build/contracts; truffle compile",
     "migrate": "npm run transpile; truffle migrate",
     "test": "npm run compile; npm run generate-typings; npm run transpile; truffle test",
-    "testrpc": "ganache-cli --networkId 50"
+    "testrpc": "ganache-cli --db=/tmp --networkId 50 --account='0x7231a774a538fce22a329729b03087de4cb4a1119494db1c10eae3bb491823e7, 10000000000000000000'  --account='0x0723488e61cd294c350f749ff2c2512a0793d1db9950e413b684e3a58d54e5e9, 10000000000000000000'",
+    "init": "truffle exec scripts/initial.js",
+    "console": "truffle console"
   },
   "repository": "git@github.com:dharmaprotocol/NonFungibleToken.git",
   "author": "Nadav Hollander <nadav@dharma.io>",
@@ -42,7 +44,7 @@
     "truffle": "^4.0.4",
     "tslint": "^5.8.0",
     "typescript": "^2.6.1",
-    "web3": "0.19.0",
+    "web3": "^0.20.0",
     "web3-typescript-typings": "^0.7.2"
   }
 }
