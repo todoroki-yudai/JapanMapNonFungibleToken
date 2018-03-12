@@ -19,7 +19,7 @@
             }
 
             var abi = null;
-            var addr = '0x7d93c342f154ba3ceaf116a2f3218c05e03f4bf8';
+            var addr = '0x58f33ba36316d82aabd563e400cee4b43967abc5';
             var contract = null;
 
             $.ajax({
@@ -70,7 +70,9 @@
                 onSelect : function(data){
                     contract.getToken(data.code, (err, token) => {
                         var currentValue = parseInt(token[2]['c'][0]);
-                        $("#snatch").text("今の価値は"+currentValue+"weiです。購入するには"+(currentValue+1)+"wei必要です。");
+                        var currentOwner = token[3];
+                        var nextValue = currentValue+1;
+                        $("#snatch").text("今の価値は"+currentValue+"weiです。購入するには"+nextValue+"wei必要です。");
                         $("#snatch").dialog({
                         			modal: true, //モーダル表示
                         			title: data.name+"を所有しますか？", //タイトル
@@ -85,6 +87,11 @@
                                           }
                                           alert(data.name+'を手に入れました！');
                                           $(this).dialog("close");
+                                          var body = data.area.name + "　" + data.name;
+                                          body += "<br> 現在の所有者 : " + window.web3.eth.accounts[0];
+                                          body += "<br> 現在の価値 : " + nextValue + "wei";
+                                          $("#text").html(body);
+                                          $("#text").css("background", data.area.color);
                                       });
                               		},
                                   "キャンセル": function() {
