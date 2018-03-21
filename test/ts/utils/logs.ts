@@ -34,6 +34,36 @@ export function LogApproval(
     };
 }
 
+export function LogMint(
+    contract: Address,
+    tokenId: UInt,
+    weiValue: UInt,
+): ABIDecoder.DecodedLog {
+    return {
+        address: contract,
+        events: _getParams([["_tokenId", tokenId], ["_weiValue", weiValue]]),
+        name: "Mint",
+    };
+}
+
+export function LogSnatch(
+    contract: Address,
+    tokenId: UInt,
+    weiValue: UInt,
+    from: Address,
+    to: Address,
+): ABIDecoder.DecodedLog {
+    return {
+        address: contract,
+        events: _getParams([
+            ["_tokenId", tokenId],
+            ["_weiValue", weiValue],
+            ["_from", from],
+            ["_to", to],
+        ]),
+        name: "Snatch",
+    };
+}
 
 function _getParams(args: [string, any][]): ABIDecoder.DecodedMethodParam[] {
     return _.map(args, (param: [string, any]): ABIDecoder.DecodedMethodParam => {

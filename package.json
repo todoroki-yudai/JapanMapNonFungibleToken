@@ -12,12 +12,13 @@
     "migrate": "npm run transpile; truffle migrate",
     "migrate-ropsten": "npm run transpile; truffle migrate --network ropsten",
     "test": "npm run compile; npm run generate-typings; npm run transpile; truffle test",
-    "testrpc": "ganache-cli --db=/tmp --networkId 50 --account='0x7231a774a538fce22a329729b03087de4cb4a1119494db1c10eae3bb491823e7, 10000000000000000000'  --account='0x0723488e61cd294c350f749ff2c2512a0793d1db9950e413b684e3a58d54e5e9, 10000000000000000000'",
+    "// testrpc": "ganache-cli --db=/tmp --networkId 50 --account='0x7231a774a538fce22a329729b03087de4cb4a1119494db1c10eae3bb491823e7, 10000000000000000000'  --account='0x0723488e61cd294c350f749ff2c2512a0793d1db9950e413b684e3a58d54e5e9, 10000000000000000000'",
+    "testrpc": "ganache-cli --networkId 50",
     "init": "truffle exec scripts/initial.js",
     "console": "truffle console"
   },
   "repository": "git@github.com:dharmaprotocol/NonFungibleToken.git",
-  "author": "Nadav Hollander <nadav@dharma.io>",
+  "author": "todoroki <nadav@gmail.com>",
   "license": "MIT",
   "pre-commit": [
     "lint"
