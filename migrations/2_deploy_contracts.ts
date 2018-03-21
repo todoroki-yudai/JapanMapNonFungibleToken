@@ -1,8 +1,8 @@
 const LandBase = artifacts.require("LandBase");
-const Prefecture = artifacts.require("Prefecture");
+const PrefectureToken = artifacts.require("PrefectureToken");
 
 module.exports = (deployer: any) => {
-    deployer.deploy(Prefecture, {
+    deployer.deploy(PrefectureToken, {
         gas: 2000000
     })
 };
