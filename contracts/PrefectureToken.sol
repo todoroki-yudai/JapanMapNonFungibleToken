@@ -29,7 +29,7 @@ contract PrefectureToken is LandBase {
     }
 
     // payable
-    /* function snatch(uint256 _tokenId, uint256 _addWei) */
+    /* function snatch(uint256 _tokenId) */
     function snatch(uint256 _tokenId)
         public
         payable

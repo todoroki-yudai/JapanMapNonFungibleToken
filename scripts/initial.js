@@ -1,4 +1,4 @@
-myToken = Prefecture.at(Prefecture.address)
+myToken = PrefectureToken.at(PrefectureToken.address)
 
 myToken.mint(1,"hokkaido",1);
 myToken.mint(2,"aomori",1);

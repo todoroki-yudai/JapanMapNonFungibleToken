@@ -1,5 +1,5 @@
 var HDWalletProvider = require("truffle-hdwallet-provider");
-var mnemonic = process.env.ROPSTEN_MNEMONIC;
+var mnemonic = process.env.ETH_MNEMONIC;
 var accessToken = process.env.INFURA_ACCESS_TOKEN;
 
 module.exports = {

@@ -12,7 +12,7 @@
     <script>
         $(function(){
             // var base_url = 'http://japanmap.wakuwaku-currency.com';
-            var base_url = '';
+            var base_url = '{BASE_URL}';
             if (typeof window.web3 !== 'undefined') {
                 // MetaMask や Mist などで Web3 オブジェクトが供給されている場合にはそれを利用
                 window.web3 = new Web3(window.web3.currentProvider);
@@ -24,7 +24,7 @@
 
             var abi = null;
             // var addr = '0x58f33ba36316d82aabd563e400cee4b43967abc5'; // ropsten
-            var addr = '0x0fb9ccef488a4b28f0bad2c45b68994e29606b6c'; // local
+            var addr = '{CONTRACT_ADDR}'; // local
 
             var contract = null;
 
