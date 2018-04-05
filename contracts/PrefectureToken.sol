@@ -29,7 +29,6 @@ contract PrefectureToken is LandBase {
     }
 
     // payable
-    /* function snatch(uint256 _tokenId) */
     function snatch(uint256 _tokenId)
         public
         payable
@@ -44,6 +43,7 @@ contract PrefectureToken is LandBase {
 
         // change value
         token.weiValue = msg.value;
+        landTokens[_tokenId] = token;
 
         // transfer eth
         _origOwner.transfer(msg.value);
