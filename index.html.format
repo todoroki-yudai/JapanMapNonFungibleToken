@@ -92,7 +92,7 @@
                         			title: data.name+"を所有しますか？", //タイトル
                         			buttons: { //ボタン
                             			"所有する": function() {
-                                      contract.snatch(data.code, {value: currentValue}, err => {
+                                      contract.snatch(data.code, {value: nextValue}, err => {
                                           if (err) {
                                               console.log(err);
                                               alert('失敗しました！');
